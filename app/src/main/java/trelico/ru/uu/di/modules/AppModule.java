@@ -6,7 +6,12 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import trelico.ru.uu.dataSources.local.Settings;
+import trelico.ru.uu.dataSources.remote.BackendlessAPI;
+
+import static trelico.ru.uu.dataSources.remote.BackendlessAPI.BASE_URL;
 
 @Module
 public class AppModule{
@@ -29,4 +34,20 @@ public class AppModule{
     public Settings provideSettings(){
         return new Settings(appContext);
     }
+
+    @Provides
+    @Singleton
+    public Retrofit provideRetrofit(){
+        return new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+    }
+
+    @Provides
+    @Singleton
+    public BackendlessAPI provideBackendlessAPI(Retrofit retrofit){
+        return retrofit.create(BackendlessAPI.class);
+    }
+
 }
