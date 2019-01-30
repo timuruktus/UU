@@ -1,4 +1,4 @@
 package trelico.ru.uu.features.login;
 
-public interface LoginRepoAPI{
+public interface LoginInteractorAPI{
 }
