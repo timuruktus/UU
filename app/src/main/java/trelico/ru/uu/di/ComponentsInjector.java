@@ -4,7 +4,7 @@ import android.content.Context;
 
 import trelico.ru.uu.di.components.AppComponent;
 import trelico.ru.uu.di.components.DaggerAppComponent;
-import trelico.ru.uu.di.components.LoginComponent;
+import trelico.ru.uu.di.login.LoginComponent;
 import trelico.ru.uu.di.modules.AppModule;
 
 public class ComponentsInjector{

@@ -5,8 +5,9 @@ import javax.inject.Singleton;
 import dagger.Component;
 import dagger.android.AndroidInjectionModule;
 import trelico.ru.uu.MyApp;
+import trelico.ru.uu.di.login.LoginComponent;
 import trelico.ru.uu.di.modules.AppModule;
-import trelico.ru.uu.di.modules.LoginModule;
+import trelico.ru.uu.di.login.LoginModule;
 import trelico.ru.uu.screens.main.MainActivity;
 
 @Singleton
