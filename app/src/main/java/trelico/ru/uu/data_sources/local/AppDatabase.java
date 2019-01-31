@@ -1,9 +1,9 @@
-package trelico.ru.uu.dataSources.local;
+package trelico.ru.uu.data_sources.local;
 
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
-import trelico.ru.uu.dataSources.local.dao.ProjectDAO;
-import trelico.ru.uu.dataSources.local.dao.UserDAO;
+import trelico.ru.uu.data_sources.local.dao.ProjectDAO;
+import trelico.ru.uu.data_sources.local.dao.UserDAO;
 import trelico.ru.uu.models.Project;
 import trelico.ru.uu.models.User;
 

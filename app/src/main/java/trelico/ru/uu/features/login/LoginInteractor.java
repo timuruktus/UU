@@ -2,7 +2,7 @@ package trelico.ru.uu.features.login;
 
 import javax.inject.Inject;
 
-import trelico.ru.uu.dataSources.local.repositories.LoginRepoAPI;
+import trelico.ru.uu.data_sources.local.repositories.LoginRepoAPI;
 
 public class LoginInteractor implements LoginInteractorAPI{
 

@@ -2,12 +2,12 @@ package trelico.ru.uu.screens.login;
 
 import javax.inject.Inject;
 
-import trelico.ru.uu.di.scopes.LoginFeature;
+import trelico.ru.uu.di.scopes.LoginScope;
 import trelico.ru.uu.features.login.LoginInteractorAPI;
-import trelico.ru.uu.utils.ViewPresenter.IPresenter;
-import trelico.ru.uu.utils.ViewPresenter.IView;
+import trelico.ru.uu.utils.view_presenter.IPresenter;
+import trelico.ru.uu.utils.view_presenter.IView;
 
-@LoginFeature
+@LoginScope
 public class LoginPresenter implements IPresenter{
 
     ILoginFragment loginFragment;

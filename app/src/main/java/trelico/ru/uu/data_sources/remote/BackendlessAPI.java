@@ -1,7 +1,8 @@
-package trelico.ru.uu.dataSources.remote;
+package trelico.ru.uu.data_sources.remote;
 
 import java.util.List;
 
+import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -21,14 +22,14 @@ public interface BackendlessAPI{
     int DEFAULT_PAGE_SIZE = 20;
 
     @GET(API_URL + "get-projects")
-    Call<List<Project>> getProjects(@Query("offset") int offset,
-                                    @Query("count") int count);
+    Observable<List<Project>> getProjects(@Query("offset") int offset,
+                                          @Query("count") int count);
 
     @GET(API_URL + "get-project")
-    Call<Project> getProject(String projectId, String userId);
+    Observable<Project> getProject(String projectId, String userId);
 
     @GET(API_URL + "get-project-users")
-    Call<Project> getProjectUsers(String projectId);
+    Observable<Project> getProjectUsers(String projectId);
 
 
 }

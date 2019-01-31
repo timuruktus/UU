@@ -1,4 +1,4 @@
-package trelico.ru.uu.utils.ViewPresenter;
+package trelico.ru.uu.utils.view_presenter;
 
 import android.util.Log;
 
@@ -35,7 +35,7 @@ public class VPStorage{
                 Log.v(TAG, "presenter " + presenter + " already attached to view " + view);
             }
         }
-
+        CommandExecutor.executeAllCommands(presenter);
     }
 
     public static void removeViewFromPresenter(IPresenter presenter, IView view){

@@ -17,7 +17,6 @@ public class ComponentsInjector{
     private LoginComponent loginComponent;
 
     public ComponentsInjector(Context appContext){
-
         appComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(appContext))
                 .build();

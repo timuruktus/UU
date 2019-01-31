@@ -1,9 +1,9 @@
-package trelico.ru.uu.dataSources.local.repositories;
+package trelico.ru.uu.data_sources.local.repositories;
 
 import javax.inject.Inject;
 
-import trelico.ru.uu.dataSources.local.dao.UserDAO;
-import trelico.ru.uu.dataSources.remote.BackendlessAPI;
+import trelico.ru.uu.data_sources.local.dao.UserDAO;
+import trelico.ru.uu.data_sources.remote.BackendlessAPI;
 
 public class LoginRepo implements LoginRepoAPI{
 

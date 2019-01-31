@@ -12,6 +12,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import trelico.ru.uu.MyApp;
 import trelico.ru.uu.R;
+import trelico.ru.uu.utils.view_presenter.VPStorage;
 
 public class MainActivity extends AppCompatActivity implements IMainActivity{
 
@@ -23,20 +24,20 @@ public class MainActivity extends AppCompatActivity implements IMainActivity{
 
     private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener
             = item -> {
-        switch(item.getItemId()){
-            case R.id.navigation_news:
-                MyApp.INSTANCE.getNavigationHost().navigate(R.id.loginFragment);
-                return true;
-            case R.id.navigation_projects:
-                MyApplication.INSTANCE.getNavigationHost().navigate(R.id.projectsFragment);
-                return true;
-            case R.id.navigation_settings:
-
-                return true;
-            case R.id.navigation_calendar:
-
-                return true;
-        }
+//        switch(item.getItemId()){
+//            case R.id.navigation_news:
+//                MyApp.INSTANCE.getNavigationHost().navigate(R.id.loginFragment);
+//                return true;
+//            case R.id.navigation_projects:
+//                MyApplication.INSTANCE.getNavigationHost().navigate(R.id.projectsFragment);
+//                return true;
+//            case R.id.navigation_settings:
+//
+//                return true;
+//            case R.id.navigation_calendar:
+//
+//                return true;
+//        }
         return false;
     };
 
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivity{
         ButterKnife.bind(this);
         bottomNavigationView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
         MyApp.INSTANCE.getAppComponent().inject(this);
+        VPStorage.addPresenterToView(mainPresenter, this);
         MyApp.INSTANCE.setNavigationHost(Navigation.findNavController(this, R.id.nav_host_fragment));
     }
 }

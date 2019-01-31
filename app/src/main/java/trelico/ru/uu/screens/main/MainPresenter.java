@@ -1,7 +1,9 @@
 package trelico.ru.uu.screens.main;
 
-import trelico.ru.uu.utils.ViewPresenter.IPresenter;
-import trelico.ru.uu.utils.ViewPresenter.IView;
+import javax.inject.Inject;
+
+import trelico.ru.uu.utils.view_presenter.IPresenter;
+import trelico.ru.uu.utils.view_presenter.IView;
 
 public class MainPresenter implements IPresenter{
 
@@ -10,5 +12,9 @@ public class MainPresenter implements IPresenter{
     @Override
     public void putViewInterface(IView view){
         mainActivity = (IMainActivity) view;
+    }
+
+    @Inject
+    public MainPresenter(){
     }
 }

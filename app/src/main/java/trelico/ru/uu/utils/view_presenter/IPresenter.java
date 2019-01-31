@@ -1,4 +1,4 @@
-package trelico.ru.uu.utils.ViewPresenter;
+package trelico.ru.uu.utils.view_presenter;
 
 
 /**

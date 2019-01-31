@@ -1,4 +1,4 @@
-package trelico.ru.uu.dataSources.local.dao;
+package trelico.ru.uu.data_sources.local.dao;
 
 import java.util.List;
 

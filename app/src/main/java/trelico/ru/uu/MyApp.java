@@ -3,6 +3,7 @@ package trelico.ru.uu;
 import android.app.Application;
 
 import androidx.navigation.NavController;
+import dagger.android.DaggerApplication;
 import trelico.ru.uu.di.ComponentsInjector;
 import trelico.ru.uu.di.components.AppComponent;
 import trelico.ru.uu.di.components.DaggerAppComponent;
@@ -37,11 +38,13 @@ public class MyApp extends Application{
 
     public void setNavigationHost(NavController navController){
         this.navController = navController;
-        navController.addOnDestinationChangedListener(componentsInjector);
     }
 
     public NavController getNavigationHost(){
         return navController;
     }
 
+    public ComponentsInjector getComponentsInjector(){
+        return componentsInjector;
+    }
 }
