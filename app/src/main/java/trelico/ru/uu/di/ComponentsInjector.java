@@ -6,6 +6,7 @@ import trelico.ru.uu.di.components.AppComponent;
 import trelico.ru.uu.di.components.DaggerAppComponent;
 import trelico.ru.uu.di.components.LoginComponent;
 import trelico.ru.uu.di.modules.AppModule;
+import trelico.ru.uu.di.modules.LoginModule;
 
 public class ComponentsInjector{
 
@@ -20,6 +21,16 @@ public class ComponentsInjector{
         appComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(appContext))
                 .build();
+    }
 
+    public LoginComponent getLoginComponent(){
+        if(loginComponent == null){
+            loginComponent = appComponent.plusLoginComponent(new LoginModule());
+        }
+        return loginComponent;
+    }
+
+    public void clearLoginComponent(){
+        loginComponent = null;
     }
 }

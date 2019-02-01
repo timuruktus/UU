@@ -2,8 +2,8 @@ package trelico.ru.uu.screens.login;
 
 import javax.inject.Inject;
 
+import trelico.ru.uu.data_sources.local.repositories.LoginRepoAPI;
 import trelico.ru.uu.di.scopes.LoginScope;
-import trelico.ru.uu.features.login.LoginInteractorAPI;
 import trelico.ru.uu.utils.view_presenter.IPresenter;
 import trelico.ru.uu.utils.view_presenter.IView;
 
@@ -11,7 +11,7 @@ import trelico.ru.uu.utils.view_presenter.IView;
 public class LoginPresenter implements IPresenter{
 
     ILoginFragment loginFragment;
-    private LoginInteractorAPI loginInteractorAPI;
+    private LoginRepoAPI loginRepoAPI;
 
     @Override
     public void putViewInterface(IView view){
@@ -19,7 +19,7 @@ public class LoginPresenter implements IPresenter{
     }
 
     @Inject
-    public LoginPresenter(LoginInteractorAPI loginInteractorAPI){
-        this.loginInteractorAPI = loginInteractorAPI;
+    public LoginPresenter(LoginRepoAPI loginRepoAPI){
+        this.loginRepoAPI = loginRepoAPI;
     }
 }

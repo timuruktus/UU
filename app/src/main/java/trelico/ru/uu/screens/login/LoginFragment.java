@@ -30,6 +30,7 @@ public class LoginFragment extends Fragment implements ILoginFragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){
+        //injection
         VPStorage.addPresenterToView(loginPresenter, this);
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         return view;

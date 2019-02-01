@@ -1,8 +1,11 @@
 package trelico.ru.uu.utils.view_presenter;
 
+import androidx.annotation.Nullable;
+
 public abstract class Command<T extends IView>{
 
-    public T view;
+    @Nullable
+    private T view;
     private IPresenter presenter;
     private Strategy strategy;
 
@@ -16,11 +19,12 @@ public abstract class Command<T extends IView>{
         this.presenter = presenter;
     }
 
+    @Nullable
     public T getView(){
         return view;
     }
 
-    public void setView(T view){
+    public void setView(@Nullable T view){
         this.view = view;
     }
 
