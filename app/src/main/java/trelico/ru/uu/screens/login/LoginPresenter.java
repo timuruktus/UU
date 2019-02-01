@@ -4,8 +4,11 @@ import javax.inject.Inject;
 
 import trelico.ru.uu.data_sources.local.repositories.LoginRepoAPI;
 import trelico.ru.uu.di.scopes.LoginScope;
+import trelico.ru.uu.utils.view_presenter.Command;
+import trelico.ru.uu.utils.view_presenter.CommandExecutor;
 import trelico.ru.uu.utils.view_presenter.IPresenter;
 import trelico.ru.uu.utils.view_presenter.IView;
+import trelico.ru.uu.utils.view_presenter.Strategy;
 
 @LoginScope
 public class LoginPresenter implements IPresenter{
@@ -21,5 +24,6 @@ public class LoginPresenter implements IPresenter{
     @Inject
     public LoginPresenter(LoginRepoAPI loginRepoAPI){
         this.loginRepoAPI = loginRepoAPI;
+        CommandExecutor.sendCommand(new LoginCommandsStorage.StartLoading(this));
     }
 }

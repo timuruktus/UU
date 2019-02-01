@@ -3,4 +3,10 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+
+    <!--LOGIN SCREEN-->
+    <color name="colorLoginBackground">#2E3645</color>
+    <color name="colorLoginButton">#4CAF50</color>
+
 </resources>

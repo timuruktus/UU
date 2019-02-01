@@ -1,6 +1,18 @@
 <resources>
-    <string name="app_name">UU</string>
+    <string name="app_name">UnitUral</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="unit_ural">ЮнIT - Урал</string>
+
+
+    <!--LOGIN SCREEN-->
+    <string name="unit">ЮнIT</string>
+    <string name="ural">Урал</string>
+    <string name="personal_cabinet">Личный кабинет</string>
+    <string name="login">Логин</string>
+    <string name="password">Пароль</string>
+    <string name="join">Войти</string>
+    <string name="register">Зарегистрироваться</string>
+
+
 </resources>

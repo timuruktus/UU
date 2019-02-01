@@ -15,8 +15,9 @@ public abstract class Command<T extends IView>{
         return presenter;
     }
 
-    public void setPresenter(IPresenter presenter){
+    public Command<T> setPresenter(IPresenter presenter){
         this.presenter = presenter;
+        return this;
     }
 
     @Nullable
@@ -24,15 +25,19 @@ public abstract class Command<T extends IView>{
         return view;
     }
 
-    public void setView(@Nullable T view){
+    public Command<T> setView(@Nullable T view){
         this.view = view;
+        return this;
     }
 
     public Strategy getStrategy(){
         return strategy;
     }
 
-    public void setStrategy(Strategy strategy){
+    public Command<T> setStrategy(Strategy strategy){
         this.strategy = strategy;
+        return this;
     }
+
+
 }

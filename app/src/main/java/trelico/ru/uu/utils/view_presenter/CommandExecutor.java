@@ -2,23 +2,21 @@ package trelico.ru.uu.utils.view_presenter;
 
 import android.util.Log;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.NoSuchElementException;
 import java.util.Queue;
 
+import androidx.annotation.NonNull;
+
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class CommandExecutor{
 
-    private static HashMap<IPresenter, Queue<Command>> commandsQueue;
+    private static HashMap<IPresenter, Queue<Command>> commandsQueue = new HashMap<>();
 
-
-    public CommandExecutor(){
-        commandsQueue = new HashMap<>();
-    }
-
-    public static void sendCommand(Command command){
+    public static void sendCommand(@NonNull Command command){
         commandsQueue.get(command.getPresenter()).add(command);
     }
 
@@ -40,8 +38,22 @@ public class CommandExecutor{
     }
 
     public static void removeCommand(IPresenter presenter, Command command){
-        if(commandsQueue.get(presenter) != null){
-            commandsQueue.get(presenter).remove(command);
+        Queue<Command> commands = commandsQueue.get(presenter);
+        if(commands != null){
+            commands.remove(command);
+        }
+    }
+
+    public static void removeCommandByClass(IPresenter presenter, Command command){
+        Queue<Command> commands = commandsQueue.get(presenter);
+        String commandClassName = command.getClass().getSimpleName();
+        if(commands != null){
+            for(Command currentCommand : commands){
+                String currentCommandClassName = currentCommand.getClass().getSimpleName();
+                if(commandClassName.equals(currentCommandClassName)){
+                    commands.remove(currentCommand);
+                }
+            }
         }
     }
 
@@ -51,8 +63,7 @@ public class CommandExecutor{
         }
     }
 
-
-    private static void executeCommand(Command command){
+    private static void executeCommand(@NonNull Command command){
         ArrayList<IView> linkedViews = VPStorage.getPresenterViews(command.getPresenter());
         try{
             for(IView view : linkedViews){
