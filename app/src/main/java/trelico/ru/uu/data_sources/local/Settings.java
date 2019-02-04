@@ -13,8 +13,6 @@ public class Settings {
         sharedPreferences = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
     }
 
-
-
     public boolean isUserLoggedIn(){
         return !getStringValue(USER_TOKEN).trim().isEmpty();
     }

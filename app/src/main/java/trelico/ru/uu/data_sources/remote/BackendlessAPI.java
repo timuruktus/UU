@@ -6,6 +6,7 @@ import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
+import trelico.ru.uu.models.CurrentUser;
 import trelico.ru.uu.models.Project;
 
 public interface BackendlessAPI{
@@ -30,6 +31,10 @@ public interface BackendlessAPI{
 
     @GET(API_URL + "get-project-users")
     Observable<Project> getProjectUsers(String projectId);
+
+    @GET(API_URL + "login-user")
+    Observable<CurrentUser> loginUser(@Query("login") String login,
+                                      @Query("password") String password);
 
 
 }

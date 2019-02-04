@@ -44,6 +44,10 @@ public class VPStorage{
         }
     }
 
+    public static void removePresenter(IPresenter presenter){
+        viewPresenterMap.remove(presenter);
+    }
+
     public static boolean hasPresenter(IPresenter presenter){
         return viewPresenterMap.containsKey(presenter);
     }
