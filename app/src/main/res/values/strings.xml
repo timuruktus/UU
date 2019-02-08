@@ -4,15 +4,33 @@
 
     <string name="unit_ural">ЮнIT - Урал</string>
 
-
-    <!--LOGIN SCREEN-->
-    <string name="unit">ЮнIT</string>
-    <string name="ural">Урал</string>
-    <string name="personal_cabinet">Личный кабинет</string>
+    <string name="next">Продолжить</string>
     <string name="login">Логин</string>
     <string name="password">Пароль</string>
     <string name="join">Войти</string>
     <string name="register">Зарегистрироваться</string>
+    <string name="unit">ЮнIT</string>
+    <string name="ural">Урал</string>
 
+    <!--LOGIN SCREEN-->
+    <string name="personal_cabinet">Личный кабинет</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--REGISTER SCREEN-->
+    <string name="register_title">Регистрация</string>
+    <string name="confirm_password">Подтвердите пароль</string>
+    <string name="first_name">Имя</string>
+    <string name="second_name">Фамилия</string>
+    <string name="email">Почта</string>
+
+    <!--MENU-->
+    <string name="projects">Проекты</string>
+    <string name="news">Новости</string>
+    <string name="calendar">Календарь</string>
+
+    <!--ERRORS-->
+    <string name="empty_field">Пустое поле</string>
 
 </resources>

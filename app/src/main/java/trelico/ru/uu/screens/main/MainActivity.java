@@ -1,22 +1,31 @@
 package trelico.ru.uu.screens.main;
 
 import android.os.Bundle;
+import android.view.View;
 
+import com.arellomobile.mvp.MvpAppCompatActivity;
+import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import javax.inject.Inject;
+import java.util.ArrayList;
+import java.util.List;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import trelico.ru.uu.MyApp;
 import trelico.ru.uu.R;
-import trelico.ru.uu.utils.view_presenter.VPStorage;
 
-public class MainActivity extends AppCompatActivity implements IMainActivity{
+public class MainActivity extends MvpAppCompatActivity implements IMainActivity{
 
-    @Inject
+    @InjectPresenter
     MainPresenter mainPresenter;
 
     @BindView(R.id.bottomNavigationView)
@@ -24,10 +33,11 @@ public class MainActivity extends AppCompatActivity implements IMainActivity{
 
     private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener
             = item -> {
-//        switch(item.getItemId()){
-//            case R.id.navigation_news:
-//                MyApp.INSTANCE.getNavigationHost().navigate(R.id.loginFragment);
-//                return true;
+        switch(item.getItemId()){
+            case R.id.nav_list_projects:
+                MyApp.INSTANCE.getNavigationHost().navigate(R.id.projectsFragment);
+                bottomNavigationView.setVisibility(View.VISIBLE);
+                return true;
 //            case R.id.navigation_projects:
 //                MyApplication.INSTANCE.getNavigationHost().navigate(R.id.projectsFragment);
 //                return true;
@@ -37,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivity{
 //            case R.id.navigation_calendar:
 //
 //                return true;
-//        }
+        }
         return false;
     };
 
@@ -47,8 +57,41 @@ public class MainActivity extends AppCompatActivity implements IMainActivity{
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         bottomNavigationView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
-        MyApp.INSTANCE.getAppComponent().inject(this);
-        VPStorage.addPresenterToView(mainPresenter, this);
-        MyApp.INSTANCE.setNavigationHost(Navigation.findNavController(this, R.id.nav_host_fragment));
+        MyApp.INSTANCE.setNavigationHost(
+                Navigation.findNavController(this, R.id.nav_host_fragment));
+        MyApp.INSTANCE.getNavigationHost()
+                .addOnDestinationChangedListener(getDestinationChangedListener());
+    }
+
+
+    NavController.OnDestinationChangedListener getDestinationChangedListener(){
+        return (controller, destination, arguments) -> {
+            if(destination.getId() == R.id.loginFragment){
+                bottomNavigationView.setVisibility(View.GONE);
+            }
+            if(destination.getId() == R.id.nav_list_news){
+                bottomNavigationView.setVisibility(View.VISIBLE);
+            }
+        };
+    }
+
+    @Override
+    public void onBackPressed(){
+        FragmentManager fm = getSupportFragmentManager();
+        List<OnBackPressedCallback> supportedFragments = new ArrayList<>();
+        for(Fragment fragment : fm.getFragments()){
+            if(fragment instanceof OnBackPressedCallback){
+                supportedFragments.add((OnBackPressedCallback) fragment);
+            }
+        }
+        if(supportedFragments.size() != 0){
+            boolean handled = supportedFragments.get(supportedFragments.size() - 1)
+                    .handleOnBackPressed();
+            if(!handled){
+                super.onBackPressed();
+            }
+        } else{
+            super.onBackPressed();
+        }
     }
 }

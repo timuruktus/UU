@@ -1,6 +1,7 @@
 package trelico.ru.uu.screens.main;
 
-import trelico.ru.uu.utils.view_presenter.IView;
+import com.arellomobile.mvp.MvpView;
 
-public interface IMainActivity extends IView{
+
+public interface IMainActivity extends MvpView{
 }

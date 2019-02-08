@@ -1,9 +1,9 @@
 package trelico.ru.uu.screens.login;
 
-import trelico.ru.uu.utils.view_presenter.Command;
-import trelico.ru.uu.utils.view_presenter.IView;
+import com.arellomobile.mvp.MvpView;
 
-public interface ILoginFragment extends IView{
+
+public interface ILoginFragment extends MvpView{
 
 
     void startLoading();

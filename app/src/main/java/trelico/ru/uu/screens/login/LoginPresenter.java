@@ -1,29 +1,41 @@
 package trelico.ru.uu.screens.login;
 
+import com.arellomobile.mvp.InjectViewState;
+import com.arellomobile.mvp.MvpPresenter;
+
 import javax.inject.Inject;
 
+import trelico.ru.uu.MyApp;
 import trelico.ru.uu.data_sources.local.repositories.LoginRepoAPI;
 import trelico.ru.uu.di.scopes.LoginScope;
-import trelico.ru.uu.utils.view_presenter.Command;
-import trelico.ru.uu.utils.view_presenter.CommandExecutor;
-import trelico.ru.uu.utils.view_presenter.IPresenter;
-import trelico.ru.uu.utils.view_presenter.IView;
-import trelico.ru.uu.utils.view_presenter.Strategy;
 
 @LoginScope
-public class LoginPresenter implements IPresenter{
-
-    ILoginFragment loginFragment;
-    private LoginRepoAPI loginRepoAPI;
-
-    @Override
-    public void putViewInterface(IView view){
-        loginFragment = (ILoginFragment) view;
-    }
+@InjectViewState
+public class LoginPresenter extends MvpPresenter<ILoginFragment>{
 
     @Inject
-    public LoginPresenter(LoginRepoAPI loginRepoAPI){
-        this.loginRepoAPI = loginRepoAPI;
-        CommandExecutor.sendCommand(new LoginCommandsStorage.StartLoading(this));
+    ILoginFragment loginFragment;
+    @Inject
+    private LoginRepoAPI loginRepoAPI;
+
+
+    @Override
+    protected void onFirstViewAttach(){
+        super.onFirstViewAttach();
+        MyApp.INSTANCE.getComponentsInjector().getLoginComponent().inject(this);
+        getViewState().startLoading();
     }
+
+    @Override
+    public void onDestroy(){
+        //Maybe we should move code to another method cause we don't know when onDestroy executes
+        super.onDestroy();
+        MyApp.INSTANCE.getComponentsInjector().clearLoginComponent();
+    }
+
+    void onJoinButtonClicked(){
+
+    }
+
+
 }

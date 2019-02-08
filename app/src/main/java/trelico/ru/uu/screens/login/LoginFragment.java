@@ -7,7 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import javax.inject.Inject;
+import com.arellomobile.mvp.MvpAppCompatFragment;
+import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,14 +19,13 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import trelico.ru.uu.MyApp;
 import trelico.ru.uu.R;
-import trelico.ru.uu.utils.view_presenter.VPStorage;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LoginFragment extends Fragment implements ILoginFragment{
+public class LoginFragment extends MvpAppCompatFragment implements ILoginFragment{
 
-    @Inject
+    @InjectPresenter
     LoginPresenter loginPresenter;
     @BindView(R.id.personalCabinet)
     AppCompatTextView personalCabinet;
@@ -46,7 +46,6 @@ public class LoginFragment extends Fragment implements ILoginFragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){
-        MyApp.INSTANCE.getComponentsInjector().getLoginComponent().inject(this);
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         return view;
     }
@@ -54,7 +53,7 @@ public class LoginFragment extends Fragment implements ILoginFragment{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
-        VPStorage.addPresenterToView(loginPresenter, this);
+//        VPStorage.addPresenterToView(loginPresenter, this);
     }
 
     @Override
@@ -74,11 +73,11 @@ public class LoginFragment extends Fragment implements ILoginFragment{
 
     @OnClick(R.id.joinButton)
     public void onJoinButtonClicked(){
-
+        loginPresenter.onJoinButtonClicked();
     }
 
     @OnClick(R.id.registerButton)
     public void onRegisterButtonClicked(){
-
+        MyApp.INSTANCE.getNavigationHost().navigate(R.id.action_loginFragment_to_registerFragment);
     }
 }

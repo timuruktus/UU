@@ -1,20 +1,11 @@
 package trelico.ru.uu.screens.main;
 
+import com.arellomobile.mvp.InjectViewState;
+import com.arellomobile.mvp.MvpPresenter;
+
 import javax.inject.Inject;
 
-import trelico.ru.uu.utils.view_presenter.IPresenter;
-import trelico.ru.uu.utils.view_presenter.IView;
+@InjectViewState
+public class MainPresenter extends MvpPresenter<IMainActivity>{
 
-public class MainPresenter implements IPresenter{
-
-    IMainActivity mainActivity;
-
-    @Override
-    public void putViewInterface(IView view){
-        mainActivity = (IMainActivity) view;
-    }
-
-    @Inject
-    public MainPresenter(){
-    }
 }
